@@ -41,4 +41,6 @@ sudo yum-config-manager \
     https://download.docker.com/linux/rhel/docker-ce-staging.repo
 sudo yum install docker-ce docker -y
 sudo systemctl start docker
-sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana:latest
+sudo git clone https://git.digitalstudium.com/digitalstudium/grafana-docker-stack.git
+sudo docker swarm init
+sudo docker stack deploy -c grafana-docker-stack/docker-compose.yml monitoring

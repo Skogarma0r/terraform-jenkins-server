@@ -32,3 +32,13 @@ sudo mkdir -p $HOME/bin && sudo cp ./kubectl $HOME/bin/kubectl && export PATH=$P
 sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 sudo chmod 700 get_helm.sh
 sudo ./get_helm.sh
+
+# install docker
+
+sudo yum install -y yum-utils
+sudo yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/rhel/docker-ce-staging.repo
+sudo yum install docker-ce docker -y
+sudo systemctl start docker
+sudo docker run -d --name=grafana -p 3000:3000 grafana/grafana:latest
